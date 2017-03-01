@@ -1,0 +1,48 @@
+<div class="countryDetail">
+    <h4>{{country.countryName}}</h4>
+
+    <div class="detailText">
+        <div class="container">
+            <div class="left">Population of Country:</div>
+            <div class="right">{{country.population | number}}</div>
+        </div>
+
+        <div class="">
+            <div class="left">Area:</div>
+            <div class="right">{{country.areaInSqKm | number}} square km</div>
+        </div>
+
+        <div class="">
+            <div class="left">Capital:</div>
+            <div class="right">{{country.capital}}</div>
+        </div>
+
+        <div class="">
+            <div class="left">Population of Capital:</div>
+            <div class="right">{{population | number}}</div>
+        </div>
+
+        <div class="">
+            <div class="left">Neighbors:</div>
+            <div class="right" ng-if="noN">
+                This country doesn't have any neighbors!
+            </div>
+            <div class="right" ng-if="yesN">
+                <a href="#!/countries/{{neighbors[0].countryCode}}">{{neighbors[0].countryName}},</a>
+                <a href="#!/countries/{{neighbors[1].countryCode}}">{{neighbors[1].countryName}},</a>
+                <a href="#!/countries/{{neighbors[2].countryCode}}">{{neighbors[2].countryName}}</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="images">
+        <span><img src="http://www.geonames.org/img/country/250/{{country.countryCode}}.png" height="200"></span>
+        <span><img src="http://www.geonames.org/flags/x/{{country.countryCode | lowercase}}.gif" height="200"></span>
+    </div>
+
+</div>
+</div>
+<div class="buttonArea">
+    <a class="btn" ng-href="#!/">Home</a>
+    <a class="btn" ng-href="#!/countries">Browse Countries</a>
+</div>
