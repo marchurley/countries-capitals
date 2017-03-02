@@ -1,0 +1,26 @@
+{
+  "name": "countries_capitals",
+  "version": "1.0.0",
+  "description": "package json",
+  "main": "Gulpfile.js",
+  "dependencies": {
+    "gulp": "^3.9.1"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-connect": "^5.0.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marchurley/countries-capitals.git"
+  },
+  "author": "marc",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/marchurley/countries-capitals/issues"
+  },
+  "homepage": "https://github.com/marchurley/countries-capitals#readme"
+}
