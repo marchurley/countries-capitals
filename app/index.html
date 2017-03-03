@@ -3,29 +3,34 @@
 
 <head>
 	<title>Countires and Capitals</title>
-		<!-- Meta Tags -->
-		<meta charset="utf-8" />
+	<!-- Meta Tags -->
+	<meta charset="utf-8" />
 
-		<!-- Stylesheets -->
-		<!-- build:css ./_assets/combined.css -->
-		<link rel="stylesheet" href="styles/reset.css">
-		<link rel="stylesheet" href="styles/style.css" />
-		<!-- endbuild -->
+	<!-- Stylesheets -->
+	<!-- build:css ./_assets/combined.css -->
+	<link rel="stylesheet" href="styles/reset.css">
+	<link rel="stylesheet" href="styles/style.css" />
+	<!-- endbuild -->
 
-		<!-- Fonts -->
-		<link href="https://fonts.googleapis.com/css?family=Roboto:400,900" rel="stylesheet">
-		<link href="https://fonts.googleapis.com/css?family=Baloo" rel="stylesheet">
+	<!-- Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,900" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Baloo" rel="stylesheet">
 </head>
 
+<!--Body is loading class, true, that gets triggered every time the view changes with $routeChangeStart and $routeChangeSuccess  -->
 <body ng-class="{loading: isLoading}">
+
+	<!--HEADER-->
 	<a href="#!/home">
-	<div class="header">
-		<h1>Countries <span class="cross">+</span> Capitals</h1>
-	</div>
+		<div class="header">
+			<h1>Countries <span class="cross">+</span> Capitals</h1>
+		</div>
 	</a>
 
+	<!--NG-VIEW DIV FOR TEMPLATES  -->
 	<div class="main" ng-view></div>
 
+	<!--FOOTER & SOCKET-->
 	<div class="footer">
 		<p class="footerTitle">Countries + Capitals App</p>
 		<p>Made with Angular 1</p>
@@ -44,7 +49,6 @@
 	<script src="./countries/country.js"></script>
 	<script src="./country_detail/country_detail.js"></script>
 	<script src="./home/home.js"></script>
-
 	<!-- endbuild -->
 
 

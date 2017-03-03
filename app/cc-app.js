@@ -1,11 +1,14 @@
+// MAIN APP MODULE THAT GETS LINKED IN INDEX.HTML WITH APPVIEWS DEPENDENCY
 angular.module('ccApp', ['ccAppViews', 'ngRoute', 'ngAnimate'])
     .config(function($locationProvider, $routeProvider) {
         $locationProvider.hashPrefix('!');
+        //REDIRECT TO HOME FOR UNKNOWN URLS
         $routeProvider.otherwise({
             redirectTo: '/'
         });
     })
 
+    //ROUTE CHANGE ERRORS GET REDIRECTED TO ERROR PAGE & LOADING ANIMATION IS SET TO TRUE WHEN $routeChangeStart 
     .run(function($rootScope, $location, $timeout) {
         // Then using the rootScoop.$on method to see if there was a routeChangeError(created by ngRoute if error in routing)
         $rootScope.$on('$routeChangeError', function() {

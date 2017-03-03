@@ -1,5 +1,6 @@
 <div class="table">
   <table>
+      <!--TABLE HEADERS-->
       <tr>
         <th>Name {{vm.marc}}</th>
         <th>Country Code {{vm.countries}}</th>
@@ -8,6 +9,7 @@
         <th>Population</th>
         <th>Continent</th>
       </tr>
+      <!--TABLE DATA WITH NG-REPEAT THAT DISPLAYES ALL THE COUNTRIES  -->
       <tr ng-repeat="country in countries">
         <td><a href="#!/countries/{{country.countryCode}}">{{country.countryName}}</a></td>
         <td><a href="#!/countries/{{country.countryCode}}">{{country.capital}}</a></td>
@@ -18,6 +20,7 @@
       </tr>
   </table>
 </div>
+
 <div class="buttonArea">
 <a class="btn" ng-href="#!/">Home</a>
 </div>

@@ -1,10 +1,12 @@
+// LIBRARY WITH ALL THE FACTORY CODE
 angular.module('ccLibrary', [])
 
-    //config function to properly configure the header//
+    //CONFIG FUNCTION TO PROPERLY CONFIGURE THE HEADER
     .config(function($httpProvider) {
         $httpProvider.defaults.useXDomain = true;
     })
 
+    //AJAX CALL TO FIND THE COUNTRY WITH PROMISE RESPONSE AND CACHING (ONLY LOADED ONCE)
     .factory('ccFindCountry', ['$http', '$q', function($http, $q) {
         return function() {
             var url = "http://api.geonames.org/countryInfo?username=marcmarcmarc&type=json";
@@ -17,13 +19,17 @@ angular.module('ccLibrary', [])
         };
     }])
 
+    //FINDING THE INDIVIDUAL COUNTRY BY RETURNING THE CCFINDCOUNTRY FUNCTION AND LOOPING THROUGH TO FIND THE COUNTRYCODE THAT MATCHES
+    //WITH THE COUNTRY CODE FROM THE URL FROM COUNTRY_DETAIL.JS. RETURNS A PROMISE THAT HAS TO BE RESOLVED IN THE $ROUTEPROVIDER OF COUNTRY_DETAIL.JS
     .factory('ccFindIndividualCountry', ['ccFindCountry', function(ccFindCountry) {
+        //countryCode argument == CountryCode from URL gets passed to function
         return function(countryCode) {
             return ccFindCountry()
-                .then(function(country) {
-                    for (var i = 0; i < country.geonames.length; i++) {
-                        if (countryCode == country.geonames[i].countryCode) {
-                            var result = country.geonames[i];
+                //response argument is the return response.data from ccFindCountry function
+                .then(function(response) {
+                    for (var i = 0; i < response.geonames.length; i++) {
+                        if (countryCode == response.geonames[i].countryCode) {
+                            var result = response.geonames[i];
                             return result;
                         }
                     }
@@ -31,44 +37,47 @@ angular.module('ccLibrary', [])
         };
     }])
 
+    //AJAX CALL TO FIND THE CAPITAL. RETURNS A PROMISE THAT HAS TO BE RESOLVED IN THE $ROUTEPROVIDER OF COUNTRY_DETAIL.JS
     .factory('ccFindCapital', ['$http', '$q', function($http, $q) {
-        return function(cityName) {
-            var url = "http://api.geonames.org/searchJSON?";
-            //set request parameters for flickr API //
-            var request = {
-                //name_equals: cityName,
-                country: cityName,
-                username: "marcmarcmarc",
-            };
-
-            //$http function to flickr url with above specified parameters //
-            return $http({
-                    url: url,
-                    params: request,
-                })
-                .then(function(response) {
-                    return $q.when(response.data.geonames);
-                });
-        };
-    }])
-
-    .factory('findNeighbors', ['$http', '$q', function($http, $q) {
+        //countryCode argument == CountryCode from URL gets passed to function
         return function(countryCode) {
-            var url = "http://api.geonames.org/neighboursJSON?";
-            //set request parameters for flickr API //
+            var url = "http://api.geonames.org/searchJSON?";
+            //set request parameters for API
             var request = {
                 //name_equals: cityName,
                 country: countryCode,
                 username: "marcmarcmarc",
             };
-
-            //$http function to flickr url with above specified parameters //
+            //$http function to api with above specified parameters
             return $http({
-                    url: url,
-                    params: request,
-                })
-                .then(function(response) {
-                    return $q.when(response.data.geonames);
-                });
+                url: url,
+                params: request,
+            })
+            //response argument is the return response from $http call
+            .then(function(response) {
+                return $q.when(response.data.geonames);
+            });
+        };
+    }])
+
+    //AJAX CALL TO FIND THE NEIGHBOURS. RETURNS A PROMISE THAT HAS TO BE RESOLVED IN THE $ROUTEPROVIDER OF COUNTRY_DETAIL.JS
+    .factory('findNeighbors', ['$http', '$q', function($http, $q) {
+        //countryCode argument == CountryCode from URL gets passed to function
+        return function(countryCode) {
+            var url = "http://api.geonames.org/neighboursJSON?";
+            //set request parameters for API
+            var request = {
+                country: countryCode,
+                username: "marcmarcmarc",
+            };
+            //$http function to api with above specified parameters
+            return $http({
+                  url: url,
+                  params: request,
+            })
+            //response argument is the return response from $http call
+            .then(function(response) {
+                  return $q.when(response.data.geonames);
+            });
         };
     }]);
