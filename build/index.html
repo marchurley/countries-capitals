@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="ccApp">
+
+<head>
+	<title>Countires and Capitals</title>
+	<!-- Meta Tags -->
+	<meta charset="utf-8" />
+
+	<!-- Stylesheets -->
+	<link rel="stylesheet" href="./_assets/combined.css"/>
+
+	<!-- Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,900" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Baloo" rel="stylesheet">
+</head>
+
+<!--Body is loading class, true, that gets triggered every time the view changes with $routeChangeStart and $routeChangeSuccess  -->
+<body ng-class="{loading: isLoading}">
+
+	<!--HEADER-->
+	<a href="#!/home">
+		<div class="header">
+			<h1>Countries <span class="cross">+</span> Capitals</h1>
+		</div>
+	</a>
+
+	<!--NG-VIEW DIV FOR TEMPLATES  -->
+	<div class="main" ng-view></div>
+
+	<!--FOOTER & SOCKET-->
+	<div class="footer">
+		<p class="footerTitle">Countries + Capitals App</p>
+		<p>Made with Angular 1</p>
+		<p>Data provided by: <a href="http://www.geonames.org" target="_blank">Geonames.org</a></p>
+	</div>
+	<div class="socket">© Copyright 2017</div>
+
+
+	<script src="./_assets/combined.js"></script>
+
+
+</body>
+
+</html>
