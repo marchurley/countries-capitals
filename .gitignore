@@ -1,3 +1,4 @@
+!app/bower_components/angular-route/angular-route.js
 app/bower_components/
 node_modules/
 node_modules
