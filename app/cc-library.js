@@ -9,7 +9,7 @@ angular.module('ccLibrary', [])
     //AJAX CALL TO FIND THE COUNTRY WITH PROMISE RESPONSE AND CACHING (ONLY LOADED ONCE)
     .factory('ccFindCountry', ['$http', '$q', function($http, $q) {
         return function() {
-            var url = "http://api.geonames.org/countryInfo?username=marcmarcmarc&type=json";
+            var url = "https://api.geonames.org/countryInfo?username=marcmarcmarc&type=json";
             return $http.get(url, {
                     cache: true
                 })
@@ -41,7 +41,7 @@ angular.module('ccLibrary', [])
     .factory('ccFindCapital', ['$http', '$q', function($http, $q) {
         //countryCode argument == CountryCode from URL gets passed to function
         return function(countryCode) {
-            var url = "http://api.geonames.org/searchJSON?";
+            var url = "https://api.geonames.org/searchJSON?";
             //set request parameters for API
             var request = {
                 //name_equals: cityName,
@@ -64,7 +64,7 @@ angular.module('ccLibrary', [])
     .factory('findNeighbors', ['$http', '$q', function($http, $q) {
         //countryCode argument == CountryCode from URL gets passed to function
         return function(countryCode) {
-            var url = "http://api.geonames.org/neighboursJSON?";
+            var url = "https://api.geonames.org/neighboursJSON?";
             //set request parameters for API
             var request = {
                 country: countryCode,
